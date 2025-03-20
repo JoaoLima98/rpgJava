@@ -4,7 +4,7 @@ public class Dice {
   int min = 1;
   int range = max - min + 1;
   int dice;
-  int maxStatus = 8;
+  int maxStatus = 3;
   int minLP = 10;
   int maxLP = 80;
   int rangeStatus = maxStatus - min + 1;

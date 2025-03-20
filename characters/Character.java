@@ -119,7 +119,7 @@ public class Character {
     enemy.lifePoints -= damage;
     console.consoleRed(this.name + " atacou e causou ", String.valueOf(damage), " de dano ao inimigo\n");
     if(poisonEffect == true){
-      enemy.lifePoints -= 2;
+      enemy.lifePoints -= 5;
       console.consoleRed("O inimigo sofreu ", 2, " de dano de envenenamento");
     }
 

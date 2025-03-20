@@ -4,7 +4,8 @@ import java.util.Scanner;
 import characters.Character;
 
 public class Store {
-  private int priceStats = 120;
+  private int priceStats = 100;
+  private int priceFullHeal = 80;
   Scanner scanner = new Scanner(System.in);
   ConsoleManager console = new ConsoleManager();
 
@@ -35,6 +36,9 @@ public class Store {
     System.out.println("Compra realizada com sucesso!");
     return false;
   }
+  public void healFullLife(Character player){
+    player.setLifePoints(player.getOriginalLP());
+  }
 
   public void openStore(Character player){
     player.setAttackBuffTurns(0);
@@ -50,7 +54,8 @@ public class Store {
       System.out.println("[4] - Comprar poção - 30 moedas");
       System.out.println("[5] - Comprar efeito de veneno - 150 moedas");
       System.out.println("[6] - Comprar aumento de buffs - 80 moedas");
-      System.out.println("[7] - Sair");
+      System.out.println("[7] - Descansar e restaurar toda vida - " +priceFullHeal+" moedas)");
+      System.out.println("[0] - Sair");
       int department = scanner.nextInt();
       scanner.nextLine();
       switch (department) {
@@ -96,7 +101,15 @@ public class Store {
               increaseBuff(player);
               player.setMoney(player.getMoney()-80);
               break;
-        case 7: 
+        case 7:
+              if(checkMoney(player, priceFullHeal)){
+                break;
+              }
+              healFullLife(player);
+              player.setMoney(player.getMoney()-priceFullHeal);
+              priceFullHeal *= 2;
+              break;
+        case 0: 
               System.out.println("Obrigado por visitar a loja");
               return;
         default:
