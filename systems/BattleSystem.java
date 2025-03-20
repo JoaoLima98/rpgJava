@@ -55,6 +55,7 @@ public class BattleSystem {
        System.out.println(enemy.getName() + " Morreu\n" + player.getName()+ " Venceu\n");
        player.setMoney(player.getMoney() + enemy.getMoney());
        player.restoreStatus();
+       player.healAfterBattle();
        store.openStore(player);
        player.restoreStatus();
       }
@@ -62,4 +63,5 @@ public class BattleSystem {
     }
  return true;
   }
+  
 }

@@ -6,6 +6,7 @@ import characters.Mage;
 import characters.Paladin;
 import enemies.*;
 import systems.BattleSystem;
+import systems.ConsoleManager;
 import systems.Dice;
 
 public class Main {
@@ -13,10 +14,12 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
     BattleSystem battle = new BattleSystem();
     Dice dice = new Dice();
+    ConsoleManager console = new ConsoleManager();
 
     boolean play = true;
 
        while (play) {
+              console.clean();
               System.out.println("Escolha seu nome: ");
               String name = scanner.nextLine();
 
@@ -27,8 +30,8 @@ public class Main {
               Character player;
               Character[] enemies = {
                      new Rats(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
-                     new Slime(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
                      new Skeleton(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
+                     new Slime(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
                      new Goblin(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
                      new Harpy(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
                      new Orc(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),

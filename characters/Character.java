@@ -104,7 +104,7 @@ public class Character {
     if(!this.isAlive()){
       return;
     }
-    int result = dice.roll();
+    int result = dice.rollDamage();
     int damage = this.attack;
     damage += result;
     damage -= enemy.defense;
@@ -112,9 +112,9 @@ public class Character {
       System.out.println(this.name + " ACERTOU UM CRÍTICO!!! LÁ VEM TONELADAS DE DANO \n");
     }
     
-    if (damage <= 0){
-      console.consoleRed(this.name + " atacou, mas causou ", 0, " de dano, que pena! \n");
-      return;
+    if (damage <= result){
+      damage = result;
+      console.consoleRed(this.name + " atacou, mas causou apenas ", damage, " , que pena! \n");
     }
     enemy.lifePoints -= damage;
     console.consoleRed(this.name + " atacou e causou ", String.valueOf(damage), " de dano ao inimigo\n");
@@ -180,7 +180,7 @@ public class Character {
     if(lifePoints >= originalLP){
       lifePoints = originalLP;
     }
-    System.out.println("Você se curou! Agora eu hp é: " + lifePoints + "/" + originalLP);
+    console.consoleGreen("Você se curou! Agora seu hp é: ", lifePoints + "/" + originalLP, "\n");
     potions--;
     System.out.println("Agora você tem: " + potions + "poções");
   }
@@ -302,6 +302,14 @@ public class Character {
         this.defenseBuffTurns = defenseBuffTurns;
     }
 
+    public void resetBuffs(){
+      if (this.attackBuffTurns == 0){
+        this.attack = this.originalAttack;
+      }
+      if(this.defenseBuffTurns == 0){
+        this.defense = this.originalDefense;
+      }
+    }
     public void decrementBuffs(){
       if(this.attackBuffTurns > 0){
         this.attackBuffTurns--;
@@ -309,9 +317,16 @@ public class Character {
       if(this.defenseBuffTurns > 0){
         this.defenseBuffTurns--;
       }
+      resetBuffs();
     }
 
-
+    public void healAfterBattle(){
+      this.lifePoints += (10 + dice.roll());
+      if(lifePoints >= originalLP){
+        lifePoints = originalLP;
+      }
+      console.consoleGreen("Você se curou um pouco após a batalha! Agora seu hp é: ", lifePoints + "/" + originalLP, "\n");
+    }
     /**
      * @return double return the buffValues
      */
@@ -325,4 +340,5 @@ public class Character {
     public void setBuffValues(double buffValues) {
         this.buffValues = buffValues;
     }
+    
 }
