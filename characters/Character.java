@@ -33,6 +33,17 @@ public class Character {
     this.originalLP = lifePoints;
     this.money = money;
   }
+  public void levelUp(){
+    this.originalAttack += 1;
+    this.originalDefense += 1;
+    this.originalLP += 10;
+
+    System.out.println("Você ficou mais forte depois desta batalha!");
+    console.consoleGreen("Você recebeu ","+"+10, " de vida");
+    console.consoleRed("Você recebeu ","+"+1, " de ataque");
+    console.consoleRed("Você recebeu ","+"+1, " de defesa");
+
+  }
 
   public void restoreStatus(){
     this.defense = originalDefense;
@@ -154,7 +165,8 @@ public class Character {
     int buff = (int) Math.round(this.attack * buffValues);
     this.attack += buff;
     this.attackBuffTurns = 3;
-    System.out.println("Seu attack foi buffado em " + buffValues +" por dois turnos! Você agora tem ataque de: " + this.attack);
+    System.out.println(String.format("Seu attack foi buffado em %.0f%% por dois turnos! Você agora tem ataque de: %d", buffValues * 100, this.attack));
+
   }
 
   public void buffDefense(Character enemy){
@@ -166,7 +178,7 @@ public class Character {
     }
     this.defense += buff;
     this.defenseBuffTurns = 3;
-    System.out.println("Sua defesa foi buffada em "+ buffValues +" por dois turnos! Você agora tem defesa de: " + this.defense);
+    System.out.println(String.format("Sua defesa foi buffada em %.0f%% por dois turnos! Você agora tem defesa de: %d", buffValues * 100, this.defense));
   }
 
   public void usePotion(Character enemy){

@@ -36,7 +36,8 @@ public class Main {
                      new Harpy(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
                      new Orc(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
                      new Bandit(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
-                     new Dragon(dice.rollLP(), dice.rollStatus(), dice.rollStatus())
+                     new Dragon(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
+                     new Jormungandr(dice.rollLP(), dice.rollStatus(), dice.rollStatus())
               };
               
 
@@ -63,7 +64,12 @@ public class Main {
                      play = battle.battle(player, enemy, play);
                      if (!play) break;
               }
+
+       System.out.println("Parabéns, você derrotou o terrível mal-feitor, mas infelizmente a princesa está em outro castelo.");
+       System.out.println("FIM!");
+       break;
        }
-    
+
+       
 }
 }
