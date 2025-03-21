@@ -43,10 +43,10 @@ public class Store {
   public void openStore(Character player){
     player.setAttackBuffTurns(0);
     player.setDefenseBuffTurns(0);
-    System.out.println("Parabéns pela vitória recente! ");
+    System.out.println("Parabéns pela vitória! ");
     while (true) {
       console.consoleYellow("Moedas: ", player.getMoney());
-      System.out.println("****BEM VINDO A LOJA******");
+      System.out.println("\n<----BEM VINDO A LOJA---->");
       System.out.println("Selecione o que deseja: ");
       System.out.println("[1] - Aumentar 50 de HP máximo e curar 25 - "+priceStats+" moedas");
       System.out.println("[2] - Aumentar 5 de ataque - " +priceStats+" moedas");
@@ -58,7 +58,9 @@ public class Store {
       System.out.println("[0] - Sair");
       int department = scanner.nextInt();
       scanner.nextLine();
+      console.clean();
       switch (department) {
+
         case 1:
               if(checkMoney(player, priceStats)){
                 break;
