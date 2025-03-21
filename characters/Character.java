@@ -49,7 +49,6 @@ public class Character {
     this.defense = originalDefense;
     this.attack = originalAttack;
     System.out.println("Status restaurados");
-    showStatus();
   }
 
     /**
@@ -125,7 +124,6 @@ public class Character {
     
     if (damage <= result){
       damage = result;
-      console.consoleRed(this.name + " atacou, mas causou apenas ", damage, " , que pena! \n");
     }
     enemy.lifePoints -= damage;
     console.consoleRed(this.name + " atacou e causou ", String.valueOf(damage), " de dano ao inimigo\n");
@@ -134,7 +132,7 @@ public class Character {
       console.consoleRed("O inimigo sofreu ", 2, " de dano de envenenamento");
     }
 
-    enemy.showLP();
+
   }
   public void showStatus(){
     System.out.println("Nome: " + name);

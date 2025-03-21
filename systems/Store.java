@@ -49,10 +49,10 @@ public class Store {
       System.out.println("****BEM VINDO A LOJA******");
       System.out.println("Selecione o que deseja: ");
       System.out.println("[1] - Aumentar 50 de HP máximo e curar 25 - "+priceStats+" moedas");
-      System.out.println("[2] - Aumentar ataque - " +priceStats+" moedas");
-      System.out.println("[3] - Aumentar defesa - "+priceStats+" moedas");
+      System.out.println("[2] - Aumentar 5 de ataque - " +priceStats+" moedas");
+      System.out.println("[3] - Aumentar 5 de defesa - "+priceStats+" moedas");
       System.out.println("[4] - Comprar poção - 30 moedas");
-      System.out.println("[5] - Comprar efeito de veneno - 150 moedas");
+      System.out.println("[5] - Comprar efeito de veneno (5 de dano por turno) - 150 moedas");
       System.out.println("[6] - Comprar aumento de buffs - 80 moedas");
       System.out.println("[7] - Descansar e restaurar toda vida - " +priceFullHeal+" moedas)");
       System.out.println("[0] - Sair");
@@ -110,7 +110,7 @@ public class Store {
               priceFullHeal *= 2;
               break;
         case 0: 
-              System.out.println("Obrigado por visitar a loja");
+              System.out.println("Obrigado por visitar a loja\n");
               return;
         default:
                 System.out.println("Opção não existente.");

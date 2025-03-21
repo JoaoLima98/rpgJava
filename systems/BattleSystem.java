@@ -58,7 +58,7 @@ public class BattleSystem {
      if (enemy.getLifePoints() <= 0) {
        System.out.println(enemy.getName() + " Morreu\n" + player.getName()+ " Venceu\n");
        player.setMoney(player.getMoney() + enemy.getMoney());
-       console.consoleYellow("Você recebeu: ", enemy.getMoney(), " de moedas por derrotar" + enemy.getName());
+       console.consoleYellow("Você recebeu: ", enemy.getMoney(), " de moedas por derrotar " + enemy.getName());
        player.restoreStatus();
        player.levelUp();
        player.healAfterBattle();
