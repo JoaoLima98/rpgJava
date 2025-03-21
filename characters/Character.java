@@ -119,7 +119,7 @@ public class Character {
     int damage = this.attack;
     damage += result;
     damage -= enemy.defense;
-    if(result > 5){
+    if(result == 5){
       System.out.println(this.name + " ACERTOU UM CRÍTICO!!! LÁ VEM TONELADAS DE DANO \n");
     }
     
@@ -137,7 +137,7 @@ public class Character {
     enemy.showLP();
   }
   public void showStatus(){
-    System.out.println("Player: " + name);
+    System.out.println("Nome: " + name);
     System.out.println("Ataque: " + attack);
     System.out.println("Defesa: " + defense);
     console.consoleYellow("Moedas: ", money);

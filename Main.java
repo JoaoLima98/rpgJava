@@ -28,6 +28,7 @@ public class Main {
               int chosen = scanner.nextInt();
               scanner.nextLine();
               Character player;
+              console.clean();
               Character[] enemies = {
                      new Rats(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
                      new Skeleton(dice.rollLP(), dice.rollStatus(), dice.rollStatus()),
@@ -57,8 +58,6 @@ public class Main {
                      player = new Knight(name, dice.rollLP(), dice.rollStatus(), dice.rollStatus());
                      break;
               }
-
-              player.showStatus();
               
               for (Character enemy : enemies) {
                      play = battle.battle(player, enemy, play);

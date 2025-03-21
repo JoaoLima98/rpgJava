@@ -4,37 +4,41 @@ import java.util.Scanner;
 import characters.Character;
 
 public class BattleSystem {
-  ConsoleManager clean = new ConsoleManager();
+  ConsoleManager console = new ConsoleManager();
   Scanner scanner = new Scanner(System.in);
   Store store = new Store();
-  
+
+
   public boolean battle(Character player, Character enemy, boolean play){
     System.out.println("Você está enfrentando " + enemy.getName());
     while (player.isAlive() && enemy.isAlive()) {
+      player.showStatus();
+      System.out.println("-------------------");
       int chosen;
-      clean.consoleGreen(enemy.getName() + " tem ", enemy.getLifePoints() + "/" +enemy.getOriginalLP(), " de HP\n");
+      enemy.showStatus();
       System.out.println("Escolha seu movimento: [1] Ataque - [2] Buffar ataque - [3] - Buffar defesa - [4] - Usar poção");
 
       chosen = scanner.nextInt();
       switch (chosen) {
       case 1:
-             clean.clean();
+             console.clean();
              player.attackEnemy(enemy);
              break;
       case 2:
-             clean.clean();
+             console.clean();
              player.buffAttack(enemy);
              break;
       case 3:
-             clean.clean();
+             console.clean();
              player.buffDefense(enemy);
              break;
       case 4:
-            clean.clean();
+            console.clean();
             player.usePotion(enemy);
             break;
+      
       default:
-             clean.clean();
+             console.clean();
              System.out.println("Escolha inválida! Definindo como Ataque por padrão.");
              player.attackEnemy(enemy);
              break;
@@ -54,6 +58,7 @@ public class BattleSystem {
      if (enemy.getLifePoints() <= 0) {
        System.out.println(enemy.getName() + " Morreu\n" + player.getName()+ " Venceu\n");
        player.setMoney(player.getMoney() + enemy.getMoney());
+       console.consoleYellow("Você recebeu: ", enemy.getMoney(), " de moedas por derrotar" + enemy.getName());
        player.restoreStatus();
        player.levelUp();
        player.healAfterBattle();
